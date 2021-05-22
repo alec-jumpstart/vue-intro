@@ -15,6 +15,5 @@ var app = new Vue({
         variantColor: "blue",
       }
     ],
-    sizes: ['XS', 'S', 'M', 'L', 'XL']
   }
 })
