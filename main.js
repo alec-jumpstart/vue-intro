@@ -3,7 +3,6 @@ var app = new Vue({
   data: {
     brand: 'Vue Masterful',
     product: 'Socks',
-    inStock: false,
     details: ['80% cotton', '20% polyester', 'Gender-neutral'],
     selectedVariant: 0,
     variants: [
@@ -11,11 +10,13 @@ var app = new Vue({
         variantId: 2234,
         variantColor: "green",
         variantImage: './assets/vmSocks-green.jpg',
+        variantQuantity: 0,
       },
       {
         variantId: 2235,
         variantColor: "blue",
         variantImage: './assets/vmSocks-blue.jpg',
+        variantQuantity: 10,
       }
     ],
     cart: 0,
@@ -34,6 +35,9 @@ var app = new Vue({
     },
     image() {
       return this.variants[this.selectedVariant].variantImage
+    },
+    inStock() {
+      return this.variants[this.selectedVariant].variantQuantity > 0
     }
   }
 })
