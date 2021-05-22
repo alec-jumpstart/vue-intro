@@ -53,7 +53,6 @@ Vue.component('product', {
         }
       ],
       cart: 0,
-      premium: false,
     }
   },
   methods: {
@@ -87,4 +86,7 @@ Vue.component('product', {
 
 var app = new Vue({
   el: '#app',
+  data: {
+    premium: true,
+  }
 })
