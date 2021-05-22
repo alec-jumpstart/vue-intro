@@ -1,4 +1,16 @@
 Vue.config.devtools = true
+
+Vue.component('product-review', {
+  template: `
+    <input v-model="name">
+  `,
+  data() {
+    return {
+      name: null
+    }
+  }
+})
+
 Vue.component('product', {
   props: {
     premium: {
@@ -28,6 +40,7 @@ Vue.component('product', {
           <button v-on:click="addToCart" :disabled="!inStock" :class="{ disabledButton: !inStock }">
           Add to Cart</button>
       </div>
+      <product-review></product-review>
   </div>
   `,
   data() {
