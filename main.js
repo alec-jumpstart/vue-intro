@@ -3,9 +3,9 @@ var app = new Vue({
   data: {
     brand: 'Vue Masterful',
     product: 'Socks',
-    image: './assets/vmSocks-green.jpg',
     inStock: false,
     details: ['80% cotton', '20% polyester', 'Gender-neutral'],
+    selectedVariant: 0,
     variants: [
       {
         variantId: 2234,
@@ -24,13 +24,16 @@ var app = new Vue({
     addToCart() {
       this.cart += 1
     },
-    updateProduct(variantImage) {
-      this.image = variantImage
+    updateProduct(index) {
+      this.selectedVariant = index
     },
   },
   computed: {
     title() {
       return this.brand + ' ' + this.product
+    },
+    image() {
+      return this.variants[this.selectedVariant].variantImage
     }
   }
 })
