@@ -1,4 +1,10 @@
 Vue.component('product', {
+  props: {
+    premium: {
+      type: Boolean,
+      required: true,
+    }
+  },
   template: `
   <div class="product">
       <div class="product-image">
@@ -8,6 +14,7 @@ Vue.component('product', {
           <h1>{{ title }}</h1>
           <p v-if="inStock">In Stock</p>
           <p v-else :class="{ lineThrough: !inStock }">Out of Stock</p>
+          <p>Shipping: {{ shipping }} </p>
 
           <ul>
           <li v-for="detail in details">{{ detail }}</li>
@@ -46,6 +53,7 @@ Vue.component('product', {
         }
       ],
       cart: 0,
+      premium: false,
     }
   },
   methods: {
@@ -65,6 +73,13 @@ Vue.component('product', {
     },
     inStock() {
       return this.variants[this.selectedVariant].variantQuantity > 0
+    },
+    shipping() {
+      if (this.premium) {
+        return "Free"
+      } else {
+        return "$2.99"
+      }
     }
   }
 })
